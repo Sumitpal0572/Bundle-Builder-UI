@@ -25,7 +25,7 @@ function renderProducts() {
       <img src="${product.image}" alt="${product.name}">
       <div class="info">
         <h4>${product.name}</h4>
-        <p>₹${product.price}</p>
+        <p>$${product.price.toFixed(2)}</p>
       </div>
       <button>
         <span>Add to Bundle</span>
@@ -43,25 +43,59 @@ function updateSidebar() {
 
     selectedItems.forEach(item => {
         const li = document.createElement("li");
+        subtotal += item.price * item.quantity;
+
         li.innerHTML = `
       <img src="${item.image}" alt="">
-      <span>${item.name}</span>
+      <div>
+        <div>${item.name}<br><small>$${item.price.toFixed(2)}</small></div>
+        <div class="quantity-control">
+          <button class="decrease" data-id="${item.id}">-</button>
+          <span>${item.quantity}</span>
+          <button class="increase" data-id="${item.id}">+</button>
+        </div>
+      </div>
     `;
         selectedList.appendChild(li);
-        subtotal += item.price;
     });
 
-    if (selectedItems.length >= 3) {
-        const discount = subtotal * 0.3;
-        discountAmount.textContent = `- ₹${discount.toFixed(2)}`;
-        subtotalAmount.textContent = `₹${(subtotal - discount).toFixed(2)}`;
-        proceedBtn.disabled = false;
-    } else {
-        discountAmount.textContent = `- ₹0.00`;
-        subtotalAmount.textContent = `₹${subtotal.toFixed(2)}`;
-        proceedBtn.disabled = true;
-    }
+    const discount = selectedItems.length >= 3 ? subtotal * 0.3 : 0;
+    discountAmount.textContent = `- $${discount.toFixed(2)}`;
+    subtotalAmount.textContent = `$${(subtotal - discount).toFixed(2)}`;
+
+    proceedBtn.disabled = selectedItems.length < 3;
+
+    // Update button styles in grid
+    document.querySelectorAll(".product-card").forEach(card => {
+        const id = parseInt(card.dataset.id);
+        const btn = card.querySelector("button");
+        if (selectedItems.some(p => p.id === id)) {
+            btn.classList.add("added");
+            btn.innerHTML = `<span>Added to Bundle</span><span>&#10003;</span>`; // checkmark
+        } else {
+            btn.classList.remove("added");
+            btn.innerHTML = `<span>Add to Bundle</span><span>+</span>`;
+        }
+    });
 }
+
+// Quantity adjustments
+selectedList.addEventListener("click", e => {
+    if (e.target.matches("button.decrease")) {
+        const id = parseInt(e.target.dataset.id);
+        const item = selectedItems.find(p => p.id === id);
+        if (item.quantity > 1) {
+            item.quantity--;
+        }
+        updateSidebar();
+    }
+    if (e.target.matches("button.increase")) {
+        const id = parseInt(e.target.dataset.id);
+        const item = selectedItems.find(p => p.id === id);
+        item.quantity++;
+        updateSidebar();
+    }
+});
 
 productContainer.addEventListener("click", e => {
     const card = e.target.closest(".product-card");
@@ -72,10 +106,9 @@ productContainer.addEventListener("click", e => {
 
     if (index >= 0) {
         selectedItems.splice(index, 1);
-        card.classList.remove("selected");
     } else {
-        selectedItems.push(products.find(p => p.id === id));
-        card.classList.add("selected");
+        const product = products.find(p => p.id === id);
+        selectedItems.push({ ...product, quantity: 1 });
     }
 
     updateSidebar();

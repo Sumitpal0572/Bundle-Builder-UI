@@ -115,10 +115,40 @@ body {
 }
 
 .selected-items img {
-  width: 40px;
-  height: 40px;
-  margin-right: 0.5rem;
+  width: 50px;
+  height: 50px;
   object-fit: cover;
+  margin-right: 0.75rem;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.quantity-control button {
+  width: 24px;
+  height: 24px;
+  background: #eee;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.quantity-control span {
+  min-width: 16px;
+  text-align: center;
+}
+
+.product-card button.added {
+  background: #000;
+  color: #fff;
+}
+
+.product-card button.added span:last-child {
+  font-weight: bold;
 }
 
 .totals {
