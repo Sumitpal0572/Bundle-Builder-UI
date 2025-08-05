@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.product-grid {
+  flex: 3;
+}
+
+.product-grid h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.product-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.product-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.product-card .info {
+  padding: 1rem;
+}
+
+.product-card h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-card p {
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.product-card button {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.product-card button:hover {
+  background: #f0f0f0;
+}
+
+.product-card.selected {
+  border: 2px solid #d23ab3; /* pink border */
+}
+
+.sidebar {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 4px;
+  min-width: 260px;
+}
+
+.sidebar h3 {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar .instruction {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.selected-items {
+  list-style: none;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
+  min-height: 150px;
+}
+
+.selected-items li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.selected-items img {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.5rem;
+  object-fit: cover;
+}
+
+.totals {
+  margin-top: 1rem;
+}
+
+.totals .line {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+}
+
+.sidebar button {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+}
