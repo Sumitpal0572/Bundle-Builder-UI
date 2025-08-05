@@ -1,10 +1,10 @@
 const products = [
-    { id: 1, name: "Tie-Dye Lounge Set", price: 980, image: "assets/product-1.jpg" },
-    { id: 2, name: "Sunburst Tracksuit", price: 1020, image: "assets/product-2.jpg" },
-    { id: 3, name: "Retro Red Streetwear", price: 990, image: "assets/product-3.jpg" },
-    { id: 4, name: "Urban Sportswear Combo", price: 950, image: "assets/product-4.jpg" },
-    { id: 5, name: "Oversized Knit & Coat", price: 1140, image: "assets/product-5.jpg" },
-    { id: 6, name: "Chic Monochrome Blazer", price: 960, image: "assets/product-6.jpg" }
+    { id: 1, name: "Tie-Dye Lounge Set", price: 980, image: "assets/Photos/product-1.jpg" },
+    { id: 2, name: "Sunburst Tracksuit", price: 1020, image: "assets/Photos/product-2.jpg" },
+    { id: 3, name: "Retro Red Streetwear", price: 990, image: "assets/Photos/product-3.jpg" },
+    { id: 4, name: "Urban Sportswear Combo", price: 950, image: "assets/Photos/product-4.jpg" },
+    { id: 5, name: "Oversized Knit & Coat", price: 1140, image: "assets/Photos/product-5.jpg" },
+    { id: 6, name: "Chic Monochrome Blazer", price: 960, image: "assets/Photos/product-6.jpg" }
 ];
 
 const productContainer = document.getElementById("productContainer");
