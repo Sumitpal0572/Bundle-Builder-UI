@@ -17,6 +17,13 @@ body {
   align-items: flex-start;
 }
 
+.offer {
+  text-align: center;
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 18px;
+}
+
 .product-grid {
   flex: 3;
 }
@@ -34,8 +41,6 @@ body {
 
 .product-card {
   background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -78,7 +83,7 @@ body {
 }
 
 .product-card.selected {
-  border: 2px solid #d23ab3; /* pink border */
+  border: 2px solid #d23ab3;
 }
 
 .sidebar {
@@ -108,24 +113,33 @@ body {
   min-height: 150px;
 }
 
-.selected-items li {
+.selected-itmes li {
   display: flex;
   align-items: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: 12px;
 }
 
-.selected-items img {
+.selected-itmes li img {
   width: 50px;
   height: 50px;
   object-fit: cover;
-  margin-right: 0.75rem;
+  margin-right: 10px;
+  border-radius: 4px;
 }
 
 .quantity-control {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.25rem;
+  gap: 10px;
+}
+
+.quantity-control .delete {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 16px;
+  cursor: pointer;
+  gap: 25px;
 }
 
 .quantity-control button {
@@ -143,8 +157,8 @@ body {
 }
 
 .product-card button.added {
-  background: #000;
-  color: #fff;
+  background: #ccc5c5;
+  color: #cac1c1;
 }
 
 .product-card button.added span:last-child {
@@ -163,8 +177,8 @@ body {
 
 .sidebar button {
   width: 100%;
-  background: #000;
-  color: #fff;
+  background: grey;
+  color: #0c0a0ae0;
   border: none;
   padding: 1rem;
   font-weight: bold;

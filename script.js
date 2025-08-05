@@ -37,6 +37,8 @@ function renderProducts() {
     });
 }
 
+
+
 function updateSidebar() {
     selectedList.innerHTML = "";
     let subtotal = 0;
@@ -48,11 +50,12 @@ function updateSidebar() {
         li.innerHTML = `
       <img src="${item.image}" alt="">
       <div>
-        <div>${item.name}<br><small>$${item.price.toFixed(2)}</small></div>
+        <div>${item.name}<br><small>₹${item.price.toFixed(2)}</small></div>
         <div class="quantity-control">
           <button class="decrease" data-id="${item.id}">-</button>
           <span>${item.quantity}</span>
           <button class="increase" data-id="${item.id}">+</button>
+          <button class="delete" data-id="${item.id}">🗑️</button>
         </div>
       </div>
     `;
@@ -60,8 +63,8 @@ function updateSidebar() {
     });
 
     const discount = selectedItems.length >= 3 ? subtotal * 0.3 : 0;
-    discountAmount.textContent = `- $${discount.toFixed(2)}`;
-    subtotalAmount.textContent = `$${(subtotal - discount).toFixed(2)}`;
+    discountAmount.textContent = `- ₹${discount.toFixed(2)}`;
+    subtotalAmount.textContent = `₹${subtotal.toFixed(2)}`;
 
     proceedBtn.disabled = selectedItems.length < 3;
 
@@ -71,7 +74,7 @@ function updateSidebar() {
         const btn = card.querySelector("button");
         if (selectedItems.some(p => p.id === id)) {
             btn.classList.add("added");
-            btn.innerHTML = `<span>Added to Bundle</span><span>&#10003;</span>`; // checkmark
+            btn.innerHTML = `<span>Added to Bundle</span><span>&#10003;</span>`;
         } else {
             btn.classList.remove("added");
             btn.innerHTML = `<span>Add to Bundle</span><span>+</span>`;
@@ -79,23 +82,33 @@ function updateSidebar() {
     });
 }
 
+
 // Quantity adjustments
+
+
 selectedList.addEventListener("click", e => {
+    const id = parseInt(e.target.dataset.id);
+
     if (e.target.matches("button.decrease")) {
-        const id = parseInt(e.target.dataset.id);
         const item = selectedItems.find(p => p.id === id);
         if (item.quantity > 1) {
             item.quantity--;
         }
         updateSidebar();
     }
+
     if (e.target.matches("button.increase")) {
-        const id = parseInt(e.target.dataset.id);
         const item = selectedItems.find(p => p.id === id);
         item.quantity++;
         updateSidebar();
     }
+
+    if (e.target.matches("button.delete")) {
+        selectedItems = selectedItems.filter(p => p.id !== id);
+        updateSidebar();
+    }
 });
+
 
 productContainer.addEventListener("click", e => {
     const card = e.target.closest(".product-card");
@@ -120,3 +133,4 @@ proceedBtn.addEventListener("click", () => {
 });
 
 renderProducts();
+
