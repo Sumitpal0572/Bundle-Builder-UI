@@ -87,12 +87,12 @@ body {
 }
 
 .sidebar {
-  flex: 1;
-  background: #fff;
-  border: 1px solid #ddd;
-  padding: 1rem;
-  border-radius: 4px;
-  min-width: 260px;
+  border: 1px solid #ccc;
+  padding: 16px;
+  min-height: 500px; /* adjust as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .sidebar h3 {
@@ -106,30 +106,57 @@ body {
 }
 
 .selected-itmes {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 80px; /* each slot height */
+  gap: 10px;
   list-style: none;
   padding: 0;
+  margin: 0;
+  flex-grow: 1;
 }
 
 .selected-itmes li {
+  border: 1px dashed #ccc;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* ensures delete icon is at the end */
-  margin-bottom: 10px;
-  border-bottom: 1px solid #ccc;
-  padding: 8px 0;
+  justify-content: space-between;
+  padding: 6px;
+}
+
+.selected-itmes li.empty {
+  background: #f9f9f9;
+  justify-content: center;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.selected-itmes li.filled {
+  border: 1px solid #ccc;
 }
 
 .selected-itmes img {
-  width: 60px; /* or any fixed size you want */
-  height: 60px;
+  width: 50px;
+  height: 50px;
   object-fit: cover;
-  margin-right: 10px;
 }
 
 .selected-item-info {
   display: flex;
   align-items: center;
   flex-grow: 1;
+  gap: 10px;
+}
+
+.selected-item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .delete-btn {
@@ -138,12 +165,13 @@ body {
   color: red;
   font-size: 18px;
   cursor: pointer;
+  margin-left: 10px;
 }
 
 .quantity-control {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .quantity-control .delete {

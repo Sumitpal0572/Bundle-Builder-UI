@@ -86,6 +86,8 @@ function updateSidebar() {
 // Quantity adjustments
 
 
+
+
 selectedList.addEventListener("click", e => {
     const id = parseInt(e.target.dataset.id);
 
@@ -133,4 +135,6 @@ proceedBtn.addEventListener("click", () => {
 });
 
 renderProducts();
+
+
 
