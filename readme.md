@@ -1,3 +1,7 @@
+### [Deployed Link]
+
+[[Live Demo](https://bundle-builder-ui-zeta.vercel.app/)]
+
 # Bundle Builder UI
 
 This is a simple bundle builder web app built with vanilla JavaScript, HTML, and CSS.
@@ -27,5 +31,3 @@ This is a simple bundle builder web app built with vanilla JavaScript, HTML, and
 
 - The delete icon has been moved to the far right.
 - Spacing has been added between the product image and the quantity controls.
-
-
