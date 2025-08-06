@@ -89,7 +89,7 @@ body {
 .sidebar {
   border: 1px solid #ccc;
   padding: 16px;
-  min-height: 500px; /* adjust as needed */
+  min-height: 500px; 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -108,7 +108,7 @@ body {
 .selected-itmes {
   display: grid;
   grid-template-columns: 1fr;
-  grid-auto-rows: 80px; /* each slot height */
+  grid-auto-rows: 80px; 
   gap: 10px;
   list-style: none;
   padding: 0;

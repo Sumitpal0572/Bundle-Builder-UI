@@ -37,8 +37,6 @@ function renderProducts() {
     });
 }
 
-
-
 function updateSidebar() {
     selectedList.innerHTML = "";
     let subtotal = 0;
@@ -82,12 +80,7 @@ function updateSidebar() {
     });
 }
 
-
 // Quantity adjustments
-
-
-
-
 selectedList.addEventListener("click", e => {
     const id = parseInt(e.target.dataset.id);
 
